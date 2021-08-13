@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ruleset>
+  <file>.</file>
+  <rule ref="WordPress-Extra">
+      <!-- Allow long lines -->
+      <exclude name="Generic.Files.LineLength.TooLong"/>
+  </rule>
+  <exclude-pattern>languages</exclude-pattern>
+</ruleset>
