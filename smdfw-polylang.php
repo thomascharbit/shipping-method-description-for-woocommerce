@@ -22,7 +22,7 @@ foreach ( WC_Shipping_Zones::get_zones() as $zone ) {
 /**
  * Translate descriptions
  */
-add_filter( 'woocommerce_shipping_method_description_output', 'wcsmd_translate_description' );
-function wcsmd_translate_description( $description ) {
+add_filter( 'smdfw_description_output', 'smdfw_translate_description' );
+function smdfw_translate_description( $description ) {
 	return pll__( $description );
 }
