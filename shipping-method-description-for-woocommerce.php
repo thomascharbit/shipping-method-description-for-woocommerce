@@ -27,12 +27,16 @@ function smdfw_is_woocommerce_activated() {
 }
 
 /**
- * Add Polylang integration if needed
+ * Add Polylang/WPML integration if needed
  **/
 add_action( 'init', 'smdfw_init', 100 );
 function smdfw_init() {
 	if ( function_exists( 'pll_current_language' ) ) {
 		require_once SMDFW_DIR . 'includes/smdfw-polylang.php';
+	}
+
+	if ( function_exists( 'icl_object_id' ) ) {
+		require_once SMDFW_DIR . 'includes/smdfw-wpml.php';
 	}
 }
 
