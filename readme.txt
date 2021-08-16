@@ -14,6 +14,7 @@ Add a description to all WooCommerce shipping methods on cart and checkout pages
 == Description ==
 
 Add a description to all WooCommerce shipping methods on cart and checkout pages.
+Compatible with WPML and Polylang for translations.
 
 == Installation ==
 
