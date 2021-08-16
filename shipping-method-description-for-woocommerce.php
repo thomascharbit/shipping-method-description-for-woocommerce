@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: WooCommerce Shipping Method Description
+ * Plugin Name: Shipping Method Description for WooCommerce
  * Plugin URI: https://github.com/thomascharbit/woocommerce-shipping-method-description
  * Description: Add a description to all WooCommerce shipping methods on cart and checkout pages.
- * Version: 1.0.0
  * Author: Thomas Charbit
  * Author URI: https://thomascharbit.fr
- * Text Domain: woocommerce-shipping-method-description
+ * Version: 1.0.0
+ * License: GPLv3 or later License
  * Requires at least: 4.4
  * Tested up to: 5.8
  * WC requires at least: 2.6
