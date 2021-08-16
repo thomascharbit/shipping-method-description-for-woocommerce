@@ -17,11 +17,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+define( 'WCSMD_DIR', plugin_dir_path( __FILE__ ) );
+
 /**
  * Check if WooCommerce is active
  **/
 function wcsmd_is_woocommerce_activated() {
 	return class_exists( 'woocommerce' );
+}
+
+/**
+ * Add Polylang integration if needed
+ **/
+add_action( 'init', 'wcsmd_init', 100 );
+function wcsmd_init() {
+	if ( function_exists( 'pll_current_language' ) ) {
+		require_once WCSMD_DIR . 'wcsmd-polylang.php';
+	}
 }
 
 /**
@@ -40,8 +52,8 @@ function wcsmd_requirement_notice() {
 /**
  * Init plugin
  */
-add_action( 'woocommerce_loaded', 'wcsmd_init' );
-function wcsmd_init() {
+add_action( 'woocommerce_loaded', 'wcsmd_add_filters' );
+function wcsmd_add_filters() {
 	$shipping_methods = WC()->shipping->get_shipping_methods();
 
 	foreach ( $shipping_methods as $id => $shipping_method ) {
@@ -83,7 +95,8 @@ add_action( 'woocommerce_after_shipping_rate', 'wcsmd_output_shipping_rate_descr
 function wcsmd_output_shipping_rate_description( $method ) {
 	$meta_data = $method->get_meta_data();
 	if ( array_key_exists( 'description', $meta_data ) ) {
-		$html = '<div><small class="woocommerce-shipping-method-description">' . esc_html( $meta_data['description'] ) . '</small></div>';
-		echo apply_filters( 'woocommerce_shipping_method_description_output_html', $html, $meta_data['description'] );
+		$description = apply_filters( 'woocommerce_shipping_method_description_output', $meta_data['description'] );
+		$html        = '<div><small class="woocommerce-shipping-method-description">' . esc_html( $description ) . '</small></div>';
+		echo apply_filters( 'woocommerce_shipping_method_description_output_html', $html, $description );
 	}
 }
