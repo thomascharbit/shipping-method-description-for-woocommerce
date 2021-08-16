@@ -32,7 +32,7 @@ function smdfw_is_woocommerce_activated() {
 add_action( 'init', 'smdfw_init', 100 );
 function smdfw_init() {
 	if ( function_exists( 'pll_current_language' ) ) {
-		require_once SMDFW_DIR . 'smdfw-polylang.php';
+		require_once SMDFW_DIR . 'includes/smdfw-polylang.php';
 	}
 }
 
