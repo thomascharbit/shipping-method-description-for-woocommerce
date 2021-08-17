@@ -23,7 +23,7 @@ Compatible with WPML and Polylang for translations.
 3. Navigate to **WooCommerce > Settings > Shipping**.
 4. Edit a shipping zone
 5. Edit a shipping method
-6. You will now have an extra field avaialble to describe the shipping method
+6. You will now have an extra field available to describe the shipping method
 
 == Changelog ==
 
