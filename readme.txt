@@ -27,5 +27,9 @@ Compatible with WPML and Polylang for translations.
 
 == Changelog ==
 
+= 1.1.0 =
+* Added Table Rate Shipping compatibility
+* Fix: function redeclaration error with Polylang integration
+
 = 1.0.0 =
 * Initial release
