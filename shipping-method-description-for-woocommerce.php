@@ -27,16 +27,23 @@ function smdfw_is_woocommerce_activated() {
 }
 
 /**
- * Add Polylang/WPML integration if needed
+ * Init plugin
  **/
 add_action( 'init', 'smdfw_init', 100 );
 function smdfw_init() {
+	// Add Polylang integration if needed
 	if ( function_exists( 'pll_current_language' ) ) {
 		require_once SMDFW_DIR . 'includes/smdfw-polylang.php';
 	}
-
+	// Add WPML integration if needed
 	if ( function_exists( 'icl_object_id' ) && ! function_exists( 'pll_current_language' ) ) {
 		require_once SMDFW_DIR . 'includes/smdfw-wpml.php';
+	}
+
+	// Add shipping methods filters
+	$shipping_methods = WC()->shipping->get_shipping_methods();
+	foreach ( $shipping_methods as $id => $shipping_method ) {
+		add_filter( "woocommerce_shipping_instance_form_fields_$id", 'smdfw_add_form_fields' );
 	}
 }
 
@@ -50,18 +57,6 @@ function smdfw_requirement_notice() {
 		$error   = sprintf( __( 'WooCommerce Shipping Method Description requires %1$sWooCommerce%2$s to be installed & activated.', 'smdfw' ), '<a href="http://wordpress.org/extend/plugins/woocommerce/">', '</a>' );
 		$message = '<div class="error"><p>' . $error . '</p></div>';
 		echo $message;
-	}
-}
-
-/**
- * Init plugin
- */
-add_action( 'woocommerce_loaded', 'smdfw_add_filters' );
-function smdfw_add_filters() {
-	$shipping_methods = WC()->shipping->get_shipping_methods();
-
-	foreach ( $shipping_methods as $id => $shipping_method ) {
-		add_filter( "woocommerce_shipping_instance_form_fields_$id", 'smdfw_add_form_fields' );
 	}
 }
 
