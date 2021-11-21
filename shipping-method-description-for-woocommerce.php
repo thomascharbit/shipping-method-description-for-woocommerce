@@ -35,7 +35,7 @@ function smdfw_init() {
 		require_once SMDFW_DIR . 'includes/smdfw-polylang.php';
 	}
 
-	if ( function_exists( 'icl_object_id' ) ) {
+	if ( function_exists( 'icl_object_id' ) && ! function_exists( 'pll_current_language' ) ) {
 		require_once SMDFW_DIR . 'includes/smdfw-wpml.php';
 	}
 }
