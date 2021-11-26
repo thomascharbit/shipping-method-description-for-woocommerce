@@ -74,7 +74,7 @@ function smdfw_add_form_fields( $fields ) {
 	// Insert it after title field
 	$keys  = array_keys( $fields );
 	$index = array_search( 'title', $keys, true );
-	$pos   = false === $index ? count( $array ) : $index + 1;
+	$pos   = false === $index ? count( $fields ) : $index + 1;
 	return array_merge( array_slice( $fields, 0, $pos ), $new_fields, array_slice( $fields, $pos ) );
 }
 
