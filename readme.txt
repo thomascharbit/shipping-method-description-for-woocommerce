@@ -4,7 +4,7 @@ Tags: woocommerce, shipping, description
 Requires at least: 4.0
 Tested up to: 5.8
 Requires PHP: 5.3
-Stable tag: 1.0.0
+Stable tag: 1.2.0
 License: GPLv3 or later License
 WC requires at least: 2.6
 WC tested up to: 5.5
@@ -26,6 +26,10 @@ Compatible with WPML and Polylang for translations.
 6. You will now have an extra field available to describe the shipping method
 
 == Changelog ==
+
+= 1.2.0 =
+* Feature: allow HTML tags in description
+* Fix: wrong variable name when guessing field position
 
 = 1.1.0 =
 * Added Table Rate Shipping compatibility
