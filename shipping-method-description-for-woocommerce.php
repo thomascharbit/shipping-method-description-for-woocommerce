@@ -83,7 +83,7 @@ function smdfw_add_form_fields( $fields ) {
  */
 add_filter( 'woocommerce_shipping_method_add_rate_args', 'smdfw_add_rate_description_arg', 10, 2 );
 function smdfw_add_rate_description_arg( $args, $method ) {
-	$args['meta_data']['description'] = $method->get_option( 'description' );
+	$args['meta_data']['description'] = htmlentities( $method->get_option( 'description' ) );
 	return $args;
 }
 
@@ -94,8 +94,8 @@ add_action( 'woocommerce_after_shipping_rate', 'smdfw_output_shipping_rate_descr
 function smdfw_output_shipping_rate_description( $method ) {
 	$meta_data = $method->get_meta_data();
 	if ( array_key_exists( 'description', $meta_data ) ) {
-		$description = apply_filters( 'smdfw_description_output', $meta_data['description'], $method );
-		$html        = '<div><small class="smdfw">' . esc_html( $description ) . '</small></div>';
+		$description = apply_filters( 'smdfw_description_output', html_entity_decode( $meta_data['description'] ), $method );
+		$html        = '<div><small class="smdfw">' . wp_kses( $description, wp_kses_allowed_html( 'post' ) ) . '</small></div>';
 		echo apply_filters( 'smdfw_description_output_html', $html, $description, $method );
 	}
 }
