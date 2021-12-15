@@ -5,7 +5,7 @@
  * Description: Add a description to all WooCommerce shipping methods on cart and checkout pages.
  * Author: Thomas Charbit
  * Author URI: https://thomascharbit.fr
- * Version: 1.2.0
+ * Version: 1.1.0
  * License: GPLv3 or later License
  * Requires at least: 4.4
  * Tested up to: 5.8
@@ -31,6 +31,11 @@ function smdfw_is_woocommerce_activated() {
  **/
 add_action( 'init', 'smdfw_init', 100 );
 function smdfw_init() {
+	// Add shipping methods filters
+	$shipping_methods = WC()->shipping->get_shipping_methods();
+	foreach ( $shipping_methods as $id => $shipping_method ) {
+		add_filter( "woocommerce_shipping_instance_form_fields_$id", 'smdfw_add_form_fields' );
+	}
 	// Add Polylang integration if needed
 	if ( function_exists( 'pll_current_language' ) ) {
 		require_once SMDFW_DIR . 'includes/smdfw-polylang.php';
@@ -38,12 +43,6 @@ function smdfw_init() {
 	// Add WPML integration if needed
 	if ( function_exists( 'icl_object_id' ) && ! function_exists( 'pll_current_language' ) ) {
 		require_once SMDFW_DIR . 'includes/smdfw-wpml.php';
-	}
-
-	// Add shipping methods filters
-	$shipping_methods = WC()->shipping->get_shipping_methods();
-	foreach ( $shipping_methods as $id => $shipping_method ) {
-		add_filter( "woocommerce_shipping_instance_form_fields_$id", 'smdfw_add_form_fields' );
 	}
 }
 
@@ -95,7 +94,7 @@ function smdfw_output_shipping_rate_description( $method ) {
 	$meta_data = $method->get_meta_data();
 	if ( array_key_exists( 'description', $meta_data ) ) {
 		$description = apply_filters( 'smdfw_description_output', html_entity_decode( $meta_data['description'] ), $method );
-		$html        = '<div><small class="smdfw">' . wp_kses( $description, wp_kses_allowed_html( 'post' ) ) . '</small></div>';
+		$html        = '<div><small class="smdfw">' .  wp_kses( $description, wp_kses_allowed_html( 'post' ) ) . '</small></div>';
 		echo apply_filters( 'smdfw_description_output_html', $html, $description, $method );
 	}
 }
