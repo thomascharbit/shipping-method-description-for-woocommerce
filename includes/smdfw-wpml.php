@@ -24,5 +24,5 @@ foreach ( WC_Shipping_Zones::get_zones() as $zone ) {
  */
 add_filter( 'smdfw_description_output', 'smdfw_translate_description', 10, 2 );
 function smdfw_translate_description( $description, $method ) {
-	return apply_filters( 'wpml_translate_single_string', $description, 'admin_texts_woocommerce_shipping', $method->id . '_shipping_method_description' );
+	return apply_filters( 'wpml_translate_single_string', $description, 'admin_texts_woocommerce_shipping', $method->method_id . '_shipping_method_description' );
 }
