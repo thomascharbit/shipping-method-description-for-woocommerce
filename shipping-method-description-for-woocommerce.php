@@ -5,7 +5,7 @@
  * Description: Add a description to all WooCommerce shipping methods on cart and checkout pages.
  * Author: Thomas Charbit
  * Author URI: https://thomascharbit.fr
- * Version: 1.2.2
+ * Version: 1.2.3
  * License: GPLv3 or later License
  * Requires at least: 4.4
  * Tested up to: 5.8
@@ -94,7 +94,7 @@ function smdfw_output_shipping_rate_description( $method ) {
 	$meta_data = $method->get_meta_data();
 	if ( array_key_exists( 'description', $meta_data ) ) {
 		$description = apply_filters( 'smdfw_description_output', html_entity_decode( $meta_data['description'] ), $method );
-		$html        = '<div><small class="smdfw">' .  wp_kses( $description, wp_kses_allowed_html( 'post' ) ) . '</small></div>';
+		$html        = '<div class="shipping_method_description"><small class="smdfw">' .  wp_kses( $description, wp_kses_allowed_html( 'post' ) ) . '</small></div>';
 		echo apply_filters( 'smdfw_description_output_html', $html, $description, $method );
 	}
 }
