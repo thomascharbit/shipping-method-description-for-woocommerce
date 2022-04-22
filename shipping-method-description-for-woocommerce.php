@@ -5,7 +5,7 @@
  * Description: Add a description to all WooCommerce shipping methods on cart and checkout pages.
  * Author: Thomas Charbit
  * Author URI: https://thomascharbit.fr
- * Version: 1.2.3
+ * Version: 1.2.4
  * License: GPLv3 or later License
  * Requires at least: 4.4
  * Tested up to: 5.8
@@ -31,6 +31,9 @@ function smdfw_is_woocommerce_activated() {
  **/
 add_action( 'init', 'smdfw_init', 100 );
 function smdfw_init() {
+	if ( ! smdfw_is_woocommerce_activated() ) {
+		return;
+	}
 	// Add shipping methods filters
 	$shipping_methods = WC()->shipping->get_shipping_methods();
 	foreach ( $shipping_methods as $id => $shipping_method ) {
@@ -53,7 +56,7 @@ add_action( 'admin_notices', 'smdfw_requirement_notice' );
 function smdfw_requirement_notice() {
 	if ( ! smdfw_is_woocommerce_activated() ) {
 		/* translators: %1$s: open link, %2$s: close link */
-		$error   = sprintf( __( 'WooCommerce Shipping Method Description requires %1$sWooCommerce%2$s to be installed & activated.', 'smdfw' ), '<a href="http://wordpress.org/extend/plugins/woocommerce/">', '</a>' );
+		$error   = sprintf( __( 'WooCommerce Shipping Method Description requires %1$sWooCommerce%2$s to be installed and active.', 'smdfw' ), '<a href="http://wordpress.org/extend/plugins/woocommerce/">', '</a>' );
 		$message = '<div class="error"><p>' . $error . '</p></div>';
 		echo $message;
 	}
