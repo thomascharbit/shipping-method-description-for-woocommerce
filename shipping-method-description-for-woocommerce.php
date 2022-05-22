@@ -5,12 +5,12 @@
  * Description: Add a description to all WooCommerce shipping methods on cart and checkout pages.
  * Author: Thomas Charbit
  * Author URI: https://thomascharbit.fr
- * Version: 1.2.4
+ * Version: 1.2.5
  * License: GPLv3 or later License
  * Requires at least: 4.4
- * Tested up to: 5.8
+ * Tested up to: 6.0
  * WC requires at least: 2.6
- * WC tested up to: 5.5
+ * WC tested up to: 6.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

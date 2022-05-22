@@ -2,12 +2,12 @@
 Contributors: thomascharbit
 Tags: woocommerce, shipping, description
 Requires at least: 4.0
-Tested up to: 5.8
+Tested up to: 6.0
 Requires PHP: 5.3
-Stable tag: 1.2.2
+Stable tag: 1.2.5
 License: GPLv3 or later License
 WC requires at least: 2.6
-WC tested up to: 5.5
+WC tested up to: 6.4
 
 Add a description to all WooCommerce shipping methods on cart and checkout pages.
 
@@ -27,6 +27,16 @@ Compatible with WPML and Polylang for translations.
 
 == Changelog ==
 
+= 1.2.5 =
+* Tested up to WP 6.0, WC 6.4
+* Fix: WPML description translation for each method instance
+
+= 1.2.4 =
+* Fix: Check WC is activated before using WC function
+
+= 1.2.3 =
+* Add CSS class to description HTML output
+
 = 1.2.2 =
 * Fix: WPML description translation
 
@@ -35,11 +45,11 @@ Compatible with WPML and Polylang for translations.
 
 = 1.2.0 =
 * Feature: allow HTML tags in description
-* Fix: wrong variable name when guessing field position
+* Fix: Wrong variable name when guessing field position
 
 = 1.1.0 =
 * Added Table Rate Shipping compatibility
-* Fix: function redeclaration error with Polylang integration
+* Fix: Function redeclaration error with Polylang integration
 
 = 1.0.0 =
 * Initial release
