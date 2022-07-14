@@ -5,10 +5,10 @@
  * Description: Add a description to all WooCommerce shipping methods on cart and checkout pages.
  * Author: Thomas Charbit
  * Author URI: https://thomascharbit.fr
- * Version: 1.2.5
+ * Version: 1.2.6
  * License: GPLv3 or later License
  * Requires at least: 4.4
- * Tested up to: 6.0
+ * Tested up to: 6.0.1
  * WC requires at least: 2.6
  * WC tested up to: 6.4
  */
@@ -69,8 +69,9 @@ function smdfw_add_form_fields( $fields ) {
 	// Create description field
 	$new_fields = array(
 		'description' => array(
-			'title' => __( 'Description', 'smdfw' ),
-			'type'  => 'textarea',
+			'title'   => __( 'Description', 'smdfw' ),
+			'type'    => 'textarea',
+			'default' => null,
 		),
 	);
 	// Insert it after title field
@@ -97,7 +98,7 @@ function smdfw_output_shipping_rate_description( $method ) {
 	$meta_data = $method->get_meta_data();
 	if ( array_key_exists( 'description', $meta_data ) ) {
 		$description = apply_filters( 'smdfw_description_output', html_entity_decode( $meta_data['description'] ), $method );
-		$html        = '<div class="shipping_method_description"><small class="smdfw">' .  wp_kses( $description, wp_kses_allowed_html( 'post' ) ) . '</small></div>';
+		$html        = '<div class="shipping_method_description"><small class="smdfw">' . wp_kses( $description, wp_kses_allowed_html( 'post' ) ) . '</small></div>';
 		echo apply_filters( 'smdfw_description_output_html', $html, $description, $method );
 	}
 }

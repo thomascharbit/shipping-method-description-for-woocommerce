@@ -7,7 +7,7 @@ Requires PHP: 5.3
 Stable tag: 1.2.5
 License: GPLv3 or later License
 WC requires at least: 2.6
-WC tested up to: 6.4
+WC tested up to: 6.7
 
 Add a description to all WooCommerce shipping methods on cart and checkout pages.
 
@@ -26,6 +26,10 @@ Compatible with WPML and Polylang for translations.
 6. You will now have an extra field available to describe the shipping method
 
 == Changelog ==
+
+= 1.2.6 =
+* Tested up to WP 6.0.1, WC 6.7
+* Fix: Add a default value to description field to avoid PHP notice 
 
 = 1.2.5 =
 * Tested up to WP 6.0, WC 6.4

@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Shipping methods in shipping zones.
 $zone = new WC_Shipping_Zone( 0 ); // Rest of the the world.
 foreach ( $zone->get_shipping_methods() as $method ) {
-	do_action( 'wpml_register_single_string', 'admin_texts_woocommerce_shipping',  'shipping_method_' . $method->instance_id . '_description', $method->get_option( 'description' ) );
+	do_action( 'wpml_register_single_string', 'admin_texts_woocommerce_shipping', 'shipping_method_' . $method->instance_id . '_description', $method->get_option( 'description' ) );
 }
 
 foreach ( WC_Shipping_Zones::get_zones() as $zone ) {
